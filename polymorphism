@@ -1,0 +1,68 @@
+*Advanced C# Polymorphism & Interfaces Example*
+```csharp
+using System;
+using System.Collections.Generic;
+// Define the IQuittable interface
+public interface IQuittable
+{
+    void Quit();
+}
+// Abstract base class
+public abstract class Employee : IQuittable
+{
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Role { get; set; }
+    // Abstract method that must be implemented by subclasses
+    public abstract void Work();
+    // IQuittable implementation
+    public virtual void Quit()
+    {
+        Console.WriteLine("FirstNameLastName (Role) has quit the company.");
+    
+// Derived class: Developer
+public class Developer : Employee
+    public override void Work()
+    
+        Console.WriteLine("{FirstName} is writing code.");
+    }
+}
+// Derived class: Manager
+public class Manager : Employee
+{
+    public override void Work()
+    {
+        Console.WriteLine("FirstName is managing the team.");
+    
+    public override void Quit()
+Console.WriteLine("Manager {FirstName} {LastName} has resigned with notice.");
+    }
+}
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Create a list of employees (polymorphism)
+        List<Employee> team = new List<Employee>
+        {
+            new Developer { FirstName = "Alice", LastName = "Smith", Role = "Developer" },
+            new Manager { FirstName = "Bob", LastName = "Johnson", Role = "Manager" }
+        };
+        // Each employee works and quits
+        foreach (var employee in team)
+        {
+            employee.Work();
+            employee.Quit();
+            Console.WriteLine();
+        }
+        Console.ReadLine();
+    }
+}
+```
+---
+Key Concepts Used:
+- *Interfaces* (`IQuittable`)
+- *Abstract Classes* (`Employee`)
+- *Inheritance & Overriding* (`Developer`, `Manager`)
+- *Polymorphism* (`List<Employee>` with different derived types)
+- *Method Overriding* (`Quit`, `Work`)
